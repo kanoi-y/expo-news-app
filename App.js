@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function App() {
   return (
@@ -11,7 +11,13 @@ export default function App() {
             source={{ uri: "https://picsum.photos/300/300" }}
           />
         </View>
-        <View style={styles.rightContainer}></View>
+        <View style={styles.rightContainer}>
+          <Text numberOfLines={3} style={styles.text}>
+            Type Safe, Extensible, and Modular by design. Forget you are even using a store. Type
+            Safe, Extensible, and Modular by design. Forget you are even using a store.
+          </Text>
+          <Text style={styles.subText}>React native</Text>
+        </View>
       </View>
       <StatusBar style="auto" />
     </View>
@@ -28,15 +34,22 @@ const styles = StyleSheet.create({
   itemContainer: {
     height: 100,
     width: "100%",
-    backgroundColor: "red",
     flexDirection: "row",
+    backgroundColor: "#fff",
   },
   leftContainer: {
     width: 100,
-    backgroundColor: "green",
   },
   rightContainer: {
     flex: 1,
-    backgroundColor: "blue",
+    padding: 10,
+    justifyContent: "space-between",
+  },
+  text: {
+    fontSize: 16,
+  },
+  subText: {
+    fontSize: 12,
+    color: "gray",
   },
 });
