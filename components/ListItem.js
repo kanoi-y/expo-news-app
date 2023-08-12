@@ -1,20 +1,25 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 
-export const ListItem = () => {
+/**
+ *
+ * @param {
+ *  imageUrl: 画像URL(string)
+ *  title: タイトル(string)
+ *  author: ニュース提供元(string)
+ * } props
+ * @returns
+ */
+export const ListItem = (props) => {
   return (
     <View style={styles.itemContainer}>
       <View style={styles.leftContainer}>
-        <Image
-          style={{ width: 100, height: 100 }}
-          source={{ uri: "https://picsum.photos/300/300" }}
-        />
+        <Image style={{ width: 100, height: 100 }} source={{ uri: props.imageUrl }} />
       </View>
       <View style={styles.rightContainer}>
         <Text numberOfLines={3} style={styles.text}>
-          Type Safe, Extensible, and Modular by design. Forget you are even using a store. Type
-          Safe, Extensible, and Modular by design. Forget you are even using a store.
+          {props.title}
         </Text>
-        <Text style={styles.subText}>React native</Text>
+        <Text style={styles.subText}>{props.author}</Text>
       </View>
     </View>
   );
