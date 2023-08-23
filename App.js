@@ -1,18 +1,24 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
+import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { ListItem } from "./components/ListItem";
+import articles from "./dummies/articles";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
+  const items = articles.map((article, index) => {
+    return (
       <ListItem
-        imageUrl="https://picsum.photos/300/300"
-        title=" Type Safe, Extensible, and Modular by design. Forget you are even using a store. Type
-        Safe, Extensible, and Modular by design. Forget you are even using a store."
-        author="React News"
+        key={index.toString()}
+        imageUrl={article.urlToImage}
+        title={article.title}
+        author={article.author}
       />
+    );
+  });
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>{items}</ScrollView>
       <StatusBar style="auto" />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -20,8 +26,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#eee",
-    alignItems: "center",
-    justifyContent: "center",
     gap: 5,
   },
 });
