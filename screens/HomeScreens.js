@@ -6,7 +6,7 @@ import { ListItem } from "../components/ListItem";
 
 const URL = `https://newsapi.org/v2/top-headlines?country=jp&category=business&apiKey=${NEWS_API_KEY}`;
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   const [articles, setArticles] = useState([]);
 
   const fetchArticles = async () => {
@@ -26,7 +26,12 @@ export const HomeScreen = () => {
       <FlatList
         data={articles}
         renderItem={({ item }) => (
-          <ListItem imageUrl={item.urlToImage} title={item.title} author={item.author} />
+          <ListItem
+            imageUrl={item.urlToImage}
+            title={item.title}
+            author={item.author}
+            onPress={() => navigation.navigate("Article")}
+          />
         )}
         keyExtractor={(_item, index) => index.toString()}
       />
