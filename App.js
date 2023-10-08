@@ -6,7 +6,8 @@ import { Provider } from "react-redux";
 import { ArticleScreen } from "./screens/ArticleScreen";
 import { ClipScreen } from "./screens/ClipScreen";
 import { HomeScreen } from "./screens/HomeScreen";
-import { store } from "./store";
+import { store, persistor } from "./store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,7 +48,8 @@ const ClipStack = () => {
 export default function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
+      <PersistGate>
+      <NavigationContainer loading={null} persistor={persistor}>
         <Tab.Navigator screenOptions={screenOptions}>
           <Tab.Screen
             name="HomeTab"
@@ -61,6 +63,7 @@ export default function App() {
           />
         </Tab.Navigator>
       </NavigationContainer>
+      </PersistGate>
     </Provider>
   );
 }
