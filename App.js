@@ -48,8 +48,8 @@ const ClipStack = () => {
 export default function App() {
   return (
     <Provider store={store}>
-      <PersistGate>
-      <NavigationContainer loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}>
+      <NavigationContainer>
         <Tab.Navigator screenOptions={screenOptions}>
           <Tab.Screen
             name="HomeTab"
